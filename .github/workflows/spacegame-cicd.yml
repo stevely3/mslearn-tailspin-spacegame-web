@@ -23,7 +23,7 @@ jobs:
     - name: Setup .NET
       uses: actions/setup-dotnet@v4
       with:
-        dotnet-version: '8.0.x'
+        dotnet-version: '6.x'
         dotnet-quality: 'preview'
     #Build/Test/Publish the .net project
     - name: Build with dotnet
@@ -32,7 +32,7 @@ jobs:
     #   run: dotnet test ./Tailspin.SpaceGame.Web.sln --configuration Release
     - name: dotnet publish
       run: |
-        dotnet publish ./src/Web/Web.csproj -c Release -o ${{env.DOTNET_ROOT}}/myapp
+        dotnet publish ./Tailspin.SpaceGame.Web/Tailspin.SpaceGame.Web.csproj -c Release -o ${{env.DOTNET_ROOT}}/myapp
         cd ${{env.DOTNET_ROOT}}/myapp
         zip -r ../app.zip .
     # upload the published website code artifacts
