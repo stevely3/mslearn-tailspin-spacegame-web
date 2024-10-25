@@ -6,6 +6,10 @@ on:
   pull_request:
     branches:
       - main
+
+permissions:
+  id-token: write # Require write permission to Fetch an OIDC token.
+
 jobs:
   deploymentJob:
     environment: 'Development'
@@ -24,7 +28,7 @@ jobs:
           azcliversion: latest
           inlinescript: |
             az account show
-            
+
       - name: Azure PowerShell script
         uses: azure/powershell@v2
         with:
